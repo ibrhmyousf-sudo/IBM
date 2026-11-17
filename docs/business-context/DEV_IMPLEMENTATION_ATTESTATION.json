@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-11-17T10:46:24.270Z",
+  "sprint": "S1",
+  "actor": "Mahmoud Arafat",
+  "waveExecutionOrder": [
+    {
+      "wave": 1,
+      "features": [
+        "FEATURE-001",
+        "FEATURE-002",
+        "FEATURE-003"
+      ]
+    },
+    {
+      "wave": 2,
+      "features": []
+    },
+    {
+      "wave": 3,
+      "features": []
+    }
+  ],
+  "normativeSrdVerified": true
+}

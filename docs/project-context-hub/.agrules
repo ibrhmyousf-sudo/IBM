@@ -1,0 +1,51 @@
+# BA_AI_SDLC v2.3.0 GOLD — Antigravity & Autonomous BA Agent Constitution (`.agrules`)
+
+> **MANDATE:** Every AI agent operating inside `BA_AI_SDLC` or any initialized `project-context-hub/` repository MUST enforce this **v2.3.0 GOLD Zero-Bloat & Zero-Gap Constitution**. Markdown inside `project-context-hub/` is the single canonical source of truth; `.csv`, `.xlsx` (including sequential-wave PMTool imports via `npm run hub:pmtool`), and `.doc` stakeholder artifacts are deterministic CLI exports.
+
+---
+
+## 1. Command Dispatcher & Deterministic CLI Binding (`@ba-*` <-> `bin/ba-hub.js`)
+
+| Command | Workflow Spec | Mandatory Deterministic CLI Execution (`bin/ba-hub.js`) |
+|---|---|---|
+| **`@ba-intake [mode]`** | `workflows/00-ba-intake-router.md` | Run `npm run hub:intake -- --hub=<hubDir> [--mode=auto\|greenfield-brd\|high-level\|prototype-code\|markdown-import\|brownfield-cr] [--source=<path>] [--bundle=<json>] [--sprint=<ID>] [--features=<IDs>] [--cr=<CR-ID>]` (`~/` paths auto-expand). Emits `_intake/INTAKE_MANIFEST.md`, `UX_DESIGN_BRIEF.md` (`high-level`/`prototype-code`), `PROTOTYPE_DISCOVERY_REPORT.md`, `MARKDOWN_IMPORT_MAP.md`, or `PARTIAL_JIT_ANCHOR` `v1.0.0` anchors (`brownfield-cr`). |
+| **`@ba-bootstrap`** | `workflows/01-ba-bootstrap.md` | **Pass 1:** Scaffold clean `v1.0.0` workspace via `npm run hub:init -- --target=<hubDir> --project=<CODE> --name="<Name>"`; consolidate max 5 kickoff questions + `SEED-*` defaults (`Option A`). **Pass 2:** Populate `00-project-core/` & `01-roadmap-and-pm/`, then verify via `npm run hub:verify -- --hub=<hubDir> --strict`. |
+| **`@ba-sprint-plan [Scope]`** | `workflows/02-ba-sprint-plan.md` | Allocate `02-sprints/<SprintID>/`, enforce 3-Wave ordering (`Wave 1 Master/Auth -> Wave 2 Transactions -> Wave 3 Lifecycle/Reports`), isolate `SUP-*` enablers, and lock Feature Archetypes (`READ_VIEW` \| `MUTATION_WORKFLOW` \| `INTEGRATION_JOB`). |
+| **`@ba-sprint-batch [SprintID]`** | `workflows/03-ba-sprint-batch.md` | **Pass 1:** Per-screen element inventory + single Sprint Decision Table (`Option A` defaults). **Pass 2:** Emit `FEATURE-XXX.md` in Wave-chunked batches of **max `3–5` features/turn**, then run `npm run hub:verify -- --hub=<hubDir> --sprint=<SprintID> --strict` and `npm run hub:seal -- --hub=<hubDir> --sprint=<SprintID> --strict` to lock `feature_srd` digests in `SPRINT_<ID>_MANIFEST.md`. |
+| **`@ba-evolve [TargetVer]`** | `workflows/04-ba-evolve-delta.md` | **Pass 1:** Blast-radius `WAS -> CURRENT` table. **Pass 2:** Edit active rules *in-place*, append Section 10 / Section 15 ledger rows, re-seal affected sprint (`npm run hub:seal`), compile delta & optional snapshot (`npm run hub:delta -- --hub=<hubDir> --from=<vPrev> --to=<TargetVer> --snapshot`), and refresh exports (`npm run hub:export -- --hub=<hubDir>`). |
+| **`@ba-audit [SprintID\|ALL]`** | `workflows/05-ba-cross-audit.md` | Execute deterministic verification first (`npm run hub:verify -- --hub=<hubDir> --strict`), followed by semantic cross-feature rule & glossary consistency checks, and refresh traceability exports via `npm run hub:export -- --hub=<hubDir>`. |
+| **`PMTool Wave Sync`** | `bin/lib/pmtool-sync.js` | Run `npm run hub:pmtool -- --hub=<hubDir> --template=<backlog-import-template.xlsx> [--wave=auto\|inspect\|components\|epics\|features\|stories\|tasks] [--delta=<vX.Y.Z>]` to harvest live DB IDs from hidden Columns `Y..AG`, sync `01-roadmap-and-pm/BACKLOG_WBS.md` + `PMTOOL_SYNC_MAP.json`, and emit validated sequential-wave `.xlsx` files + `PMTOOL_TASKS_BOARD.{csv,json}`. |
+
+---
+
+## 2. Single Clean Canonical State (Zero Append-Only Bloat)
+1. **Pre-Baseline In-Place Authoring (`v0.1..v0.9 -> v1.0.0`):**
+   - All review fixes prior to sealing `v1.0.0 (Baseline)` edit target sections **in-place**.
+   - Stacking historical remediation sections (`## Addendum v3.x / v4.x / v5.x`, `Audit Patch Notes`), leaving stale `NOT_SPEC_SEALED` banners on `READY_FOR_DEV` files, or committing `.~lock.*` files is strictly forbidden and blocked by `ba-hub verify` and `hooks/pre-commit`.
+2. **Structured Post-Baseline Evolution (`Was / Current / Update Needed`):**
+   - Any business change after `v1.0.0` updates the active canonical rule in-place, bumps the semantic version (`v1.1.0`, `v1.2.0`, `v2.0.0`), appends exactly one row to Section 10 (`FEATURE-XXX.md`) or Section 15 (`PROJECT_CONTEXT.md`):
+     `| Ver | Date | Ref | Target ID | WAS | CURRENT | UPDATE NEEDED BY TEAM [BA, PM, Dev, Mobile, QA] |`
+   - Re-seals only modified features (`feature_srd` normalized SHA-256 over Sections 1–9) and emits `03-version-deltas/DELTA_v<From>_to_v<To>.md` via `npm run hub:delta`.
+
+---
+
+## 3. Anti-Truncation, Screen Decomposition & Seed Default Laws
+1. **Wave-Chunked Anti-Truncation Law:**
+   - Never generate >5 feature specifications in a single LLM turn or emit generic mail-merge placeholders (`«Field»`, `[TBD]`, `{{token}}`).
+2. **100% Visual Screen Decomposition (`Section 2`) & 6 UI States (`Section 3`):**
+   - Every screen declared in `Screen Refs` (`M01..MXX`, `A01..AXX`) MUST have decomposed `EL-*` rows in Section 2 (`Field`, `Derived Counter` + formula, `Status Badge` + `ENUM-*`, `Filter/Sort`, `CTA`) and cover all 6 UI states (`Loading`, `Empty`, `Single-Item`, `Populated`, `Disabled/Locked`, `Error/Retry`) in Section 3.
+3. **Mandatory Day-1 Seed Defaults (`SEED_DEFAULTS_CATALOG.md`):**
+   - Never punt visible numeric limits, timers, upload caps, pagination sizes, or toggles to *"unconfigured admin settings that fail closed until configured"*. Bind every parameter to a signed-off `SEED-*` entry with a concrete initial value.
+4. **Approval Acceleration (`Option A`):**
+   - Consolidate Pass 1 questions into a single numbered table with a recommended `Option A` default so BA/PO can reply **`APPROVE ALL`**.
+
+---
+
+## 4. Archetype-Filtered Gate A (`BA-01..BA-14`) & Two-Gate Boundary
+1. **Intent-Aware Section 5 & N/A Discipline (`STD-08-ZERO-GAP-v2.0`):**
+   - `READ_VIEW` uses Section `5A` (filters, sort, pagination, derived counter formulas); `MUTATION_WORKFLOW` and `INTEGRATION_JOB` use Section `5B` (pre-conditions, state transitions, double-submit/idempotency intent, rollback/side effects).
+   - `BA-01..BA-08` are **ALWAYS** mandatory (`N/A` forbidden). `BA-09..BA-14` and `MB-01..MB-15` (`MB-12A` Push vs `MB-12B` Deep Links) allow `N/A` only with explicit archetype justification.
+   - `VALID = round(100 * P / (14 - N), 1)` must equal `100.0%` (`F = 0, U = 0`) before setting `Gate A Status: READY_FOR_DEV`.
+2. **Strict Two-Gate Isolation (`Gate A` vs `Gate B`):**
+   - **Gate A (`READY_FOR_DEV` — Sections 1–10):** Pure BA business specification (zero SQL column types, ORM class names, HTTP route paths, or test file paths).
+   - **Gate B (`READY_TO_CODE` — Section 11 `ENG-01..ENG-10`):** Reserved strictly (`PENDING_ENG_AUDIT`) for downstream Engineering (`Backend/Web .ai` & `Mobile 02-FLUTTER ENGINE`).

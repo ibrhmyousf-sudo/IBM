@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-11-17T11:00:37.926Z",
+  "sprint": "S1",
+  "actor": "Mahmoud Arafat",
+  "openapiPath": "docs/openapi.json",
+  "postmanFiles": [
+    "docs/postman/master_master.postman_collection.json",
+    "docs/postman/openapi_master.postman_collection.json",
+    "docs/postman/pentest_abuse.postman_collection.json"
+  ],
+  "latestCycleHandoff": "docs/handoff/cycles/CYCLE-20261117-110037-S1_HANDOFF.md"
+}

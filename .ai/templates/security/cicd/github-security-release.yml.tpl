@@ -1,0 +1,114 @@
+name: Security Release Gate (Staging Newman DAST, GRC Evidence & Prod Sign-Off)
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      staging_base_url:
+        description: 'Deployed Staging / Release Candidate Base URL for Newman DAST'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  staging-dast-newman:
+    name: Staging Offensive Newman DAST Gate (SEC-161, SEC-164)
+    runs-on: ubuntu-latest
+    environment: staging-security-dast
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Compile Offensive Pentest Postman Collection v2.1
+        run: node {{AI_PREFIX}}bin/build-pentest-postman.js --force
+
+      - name: Execute Newman DAST across 6 Abuse Suites
+        env:
+          STAGING_BASE_URL: ${{ inputs.staging_base_url || secrets.STAGING_BASE_URL }}
+          PENTEST_ADMIN_TOKEN: ${{ secrets.PENTEST_ADMIN_TOKEN }}
+          PENTEST_LOW_PRIV_TOKEN: ${{ secrets.PENTEST_LOW_PRIV_TOKEN }}
+          PENTEST_FOREIGN_TENANT_TOKEN: ${{ secrets.PENTEST_FOREIGN_TENANT_TOKEN }}
+          PENTEST_FOREIGN_RESOURCE_ID: ${{ secrets.PENTEST_FOREIGN_RESOURCE_ID }}
+        run: |
+          mkdir -p docs/security
+          npx --yes newman@6.2.1 run docs/postman/pentest_abuse.postman_collection.json \
+            --env-var "base_url=${STAGING_BASE_URL}" \
+            --env-var "admin_token=${PENTEST_ADMIN_TOKEN}" \
+            --env-var "low_priv_token=${PENTEST_LOW_PRIV_TOKEN}" \
+            --env-var "foreign_tenant_token=${PENTEST_FOREIGN_TENANT_TOKEN}" \
+            --env-var "foreign_resource_id=${PENTEST_FOREIGN_RESOURCE_ID}" \
+            --reporters cli,json \
+            --reporter-json-export docs/security/newman-dast-staging-report.json \
+            --bail
+
+      - name: Upload Newman DAST Staging Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-dast-staging-report
+          path: docs/security/newman-dast-staging-report.json
+          retention-days: 90
+
+  grc-evidence-and-traceability-gate:
+    name: GRC Evidence Manifest & Commit Traceability Gate (SEC-165..174, SEC-177)
+    needs: [staging-dast-newman]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Verify Git Tag / Commit Traceability (SEC-171)
+        env:
+          EXPECTED_REF: ${{ github.ref_name }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          node -e '
+            const fs = require("fs");
+            const manifest = JSON.parse(fs.readFileSync("docs/security/evidence-manifest.json", "utf8"));
+            const tested = String(manifest.tested_git_tag_or_commit || "").trim();
+            const ref = String(process.env.EXPECTED_REF || "").trim();
+            const sha = String(process.env.EXPECTED_SHA || "").trim();
+            if (!tested || (tested !== ref && tested !== sha && !sha.startsWith(tested))) {
+              console.error("SEC-171 Traceability Mismatch: manifest tested_git_tag_or_commit=" + tested + " does not match tag/SHA (" + ref + " / " + sha + ")");
+              process.exit(1);
+            }
+          '
+
+      - name: Execute Strict 183-Control GRC & Evidence Release Gate
+        run: node {{AI_PREFIX}}bin/pentest-suite.js --evidence-manifest=docs/security/evidence-manifest.json --strict
+
+      - name: Compute Immutable SHA-256 Evidence Checksums (SEC-177)
+        run: |
+          cd docs/security
+          sha256sum SECURITY_DELIVERY_CHECKLIST.md SECURITY_DELIVERY_CHECKLIST.csv PENTEST_FINDINGS_REGISTER.md COMPANY_LEVEL_ECC_TRACKER.md evidence-manifest.json > SHA256SUMS.txt
+
+      - name: Archive Signed GRC Release Evidence Bundle (365-Day Retention)
+        uses: actions/upload-artifact@v4
+        with:
+          name: grc-release-evidence-bundle
+          path: |
+            docs/security/SECURITY_DELIVERY_CHECKLIST.md
+            docs/security/SECURITY_DELIVERY_CHECKLIST.csv
+            docs/security/PENTEST_FINDINGS_REGISTER.md
+            docs/security/COMPANY_LEVEL_ECC_TRACKER.md
+            docs/security/evidence-manifest.json
+            docs/security/SHA256SUMS.txt
+          retention-days: 365
+{{PRODUCTION_APPROVAL_JOB_GITHUB}}
+

@@ -1,0 +1,12 @@
+Seed_ID,Project,Category,Parameter_Name,Initial_Value,Unit,Admin_Configurable,Evidence_Source,BA_Sign_Off
+SEED-AUTH-OTP-TTL,IBR,Timer,OTP Verification Expiry Window,120,seconds,YES (60..300),Screen M02 / BA-STD,APPROVED
+SEED-AUTH-OTP-COOLDOWN,IBR,Timer,OTP Resend Cooldown Timer,60,seconds,YES (30..180),Screen M02 / BA-STD,APPROVED
+SEED-AUTH-MAX-ATTEMPTS,IBR,Limit,Max Consecutive Invalid OTP / Login Attempts Before Lockout,5,attempts,YES (3..10),BRD §3.2 / BA-STD,APPROVED
+SEED-LIST-PAGE-MOBILE,IBR,Pagination,Default Mobile Infinite-Scroll / Page Batch Size,20,items,NO (System Constant),Screen M05 / BA-STD,APPROVED
+SEED-LIST-PAGE-ADMIN,IBR,Pagination,"Default Web / Admin Table Page Size (Options: 10, 25, 50)",25,rows,NO (UI Selector),Screen A03 / BA-STD,APPROVED
+SEED-SEARCH-MIN-CHARS,IBR,Limit,Minimum Search Query Prefix Length,2,chars,NO (System Constant),Screen M05 / BA-STD,APPROVED
+SEED-UPLOAD-MAX-SIZE,IBR,Upload,"Max Single Attachment Upload Size (PDF, JPG, PNG)",5,MB,YES (1..20),Screen M08 / BA-STD,APPROVED
+SEED-UPLOAD-MAX-COUNT,IBR,Upload,Max Attachments per Request Submission,3,files,YES (1..10),Screen M08 / BRD §4.4,APPROVED
+SEED-BOOKING-CANCEL-WINDOW,IBR,Timer,Free Customer Cancellation Lead Time Before Scheduled Slot,24,hours,YES (1..72),BRD §5.3,APPROVED
+SEED-MAINT-GUEST-BROWSE,IBR,Toggle,Allow Unauthenticated Guest Catalog Browsing,true,boolean,YES,BRD §2.1,APPROVED
+SEED-LKP-CANCEL-REASONS,IBR,Lookup,Cancellation Reasons,"CHANGE_MIND: Changed Mind / تغيير الرأي, DELAY: Provider Delayed / تأخر مقدم الخدمة, OTHER: Other / أخرى",enum_list,YES (FEATURE-XXX),SEED_CATALOG,APPROVED

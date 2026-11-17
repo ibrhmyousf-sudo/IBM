@@ -1,0 +1,42 @@
+{
+  "schema_version": "ba-ai-sdlc-reverse-intake/v2.1.0",
+  "engine_version": "4.2.2",
+  "generated_at": "2026-11-17T09:27:00.950Z",
+  "intake_mode": "prototype-code",
+  "scope_mode": "FULL_PROJECT",
+  "feature_filter": [],
+  "project_name": "ibrahem",
+  "ba_cli_handoff_command": "node bin/ba-hub.js intake --mode=prototype-code --bundle=docs/business-context/intake/REVERSE_INTAKE_BUNDLE.json",
+  "summary": {
+    "modules_count": 0,
+    "models_count": 0,
+    "tables_count": 0,
+    "routes_count": 0,
+    "controllers_count": 0,
+    "validators_count": 0,
+    "screens_count": 0,
+    "testids_count": 0,
+    "candidate_enums_count": 0,
+    "candidate_seeds_count": 0,
+    "gate_b_clusters_count": 0
+  },
+  "unfiltered_codebase_totals": {
+    "modules_count": 0,
+    "models_count": 0,
+    "tables_count": 0,
+    "routes_count": 0,
+    "controllers_count": 0,
+    "validators_count": 0,
+    "screens_count": 0
+  },
+  "modules": [],
+  "models": [],
+  "tables": [],
+  "routes": [],
+  "controllers": [],
+  "validators": [],
+  "screens": [],
+  "candidate_enums": [],
+  "candidate_seeds": [],
+  "gate_b_hints": {}
+}

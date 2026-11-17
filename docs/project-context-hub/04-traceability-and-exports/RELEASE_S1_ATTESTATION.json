@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "4.3.0",
+  "projectCode": "IBR",
+  "sprint": "S1",
+  "semanticVersion": "v1.0.0",
+  "sealedAt": "2026-11-17T11:00:52.585Z",
+  "sealedBy": "Mahmoud Arafat",
+  "role": "SOLO_FDE",
+  "attestationDigest": "sha256:4a14ac49a9417355",
+  "checkpointCount": 3,
+  "featuresCount": 3,
+  "status": "RELEASE_SEALED"
+}

@@ -1,0 +1,425 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "InnovaDigits ibrahem (IBR) - Human-Governed Quality Review API",
+    "version": "1.0.0",
+    "description": "Authoritative OpenAPI 3.0 specification for the IBM Consulting Quality Review Platform and Microsite.",
+    "contact": {
+      "name": "Architecture & Engineering Team",
+      "email": "engineering@innovadigits.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000",
+      "description": "Local Development Server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "System",
+      "description": "System health and configuration endpoints"
+    },
+    {
+      "name": "Navigation",
+      "description": "Global shell and responsive navigation endpoints (FEATURE-001)"
+    },
+    {
+      "name": "Metrics",
+      "description": "Executive value proposition and financial metrics (FEATURE-002)"
+    },
+    {
+      "name": "Workflow",
+      "description": "Six-step methodology and quality review workflows (FEATURE-003)"
+    }
+  ],
+  "paths": {
+    "/api/v1/health": {
+      "get": {
+        "tags": ["System"],
+        "summary": "Health check probe",
+        "description": "Returns system health and active version.",
+        "operationId": "getHealth",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "System is healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/navigation": {
+      "get": {
+        "tags": ["Navigation"],
+        "summary": "Get global shell navigation",
+        "description": "Retrieves site navigation tree and active routes per FEATURE-001.",
+        "operationId": "getNavigation",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Navigation tree loaded successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NavigationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/metrics/executive": {
+      "get": {
+        "tags": ["Metrics"],
+        "summary": "Get executive value propositions",
+        "description": "Returns executive value propositions and core KPIs per FEATURE-002.",
+        "operationId": "getExecutiveMetrics",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Executive metrics retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/metrics/financials": {
+      "get": {
+        "tags": ["Metrics"],
+        "summary": "Get financial and operational statistics",
+        "description": "Returns SEC 10-K and Interim FY2025/2026 operational statistics per FEATURE-002.",
+        "operationId": "getFinancialMetrics",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Financial metrics retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FinancialsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/workflow/steps": {
+      "get": {
+        "tags": ["Workflow"],
+        "summary": "Get six-step methodology steps",
+        "description": "Returns the 6-step human-governed quality review process per FEATURE-003.",
+        "operationId": "getWorkflowSteps",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Workflow steps retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowStepsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/workflow/deliverables": {
+      "get": {
+        "tags": ["Workflow"],
+        "summary": "Get pilot deliverables and timeline",
+        "description": "Returns the 6 pilot deliverables, timelines, and boundary rules per FEATURE-003.",
+        "operationId": "getWorkflowDeliverables",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Pilot deliverables retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeliverablesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/workflow/reviews": {
+      "post": {
+        "tags": ["Workflow"],
+        "summary": "Submit quality review request",
+        "description": "Initiates a human-governed quality review workflow request.",
+        "operationId": "createWorkflowReview",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReviewRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Review request successfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/workflow/reviews/{id}": {
+      "get": {
+        "tags": ["Workflow"],
+        "summary": "Get review request by ID",
+        "description": "Retrieves the status and details of an existing quality review request.",
+        "operationId": "getReviewById",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the review request",
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Review record details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Sanctum Bearer token for authenticated staff/admin workflows"
+      }
+    },
+    "schemas": {
+      "HealthResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "healthy"
+          },
+          "version": {
+            "type": "string",
+            "example": "v1.0.0"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2026-11-17T12:00:00Z"
+          }
+        },
+        "required": ["status", "version", "timestamp"]
+      },
+      "NavigationItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "nav-home"
+          },
+          "label_ar": {
+            "type": "string",
+            "example": "الرئيسية"
+          },
+          "label_en": {
+            "type": "string",
+            "example": "Home"
+          },
+          "url": {
+            "type": "string",
+            "example": "/"
+          },
+          "data_testid": {
+            "type": "string",
+            "example": "shell-nav-link-home"
+          }
+        },
+        "required": ["id", "label_ar", "label_en", "url", "data_testid"]
+      },
+      "NavigationResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NavigationItem"
+            }
+          }
+        },
+        "required": ["data"]
+      },
+      "MetricsResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "value_propositions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": { "type": "string", "example": "PROP-01" },
+                    "title_ar": { "type": "string", "example": "الحوكمة البشرية الإلزامية" },
+                    "title_en": { "type": "string", "example": "Mandatory Human Governance" },
+                    "description_en": { "type": "string", "example": "Zero autonomous approval overrides." }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": ["data"]
+      },
+      "FinancialsResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "fy2025_revenue": { "type": "string", "example": "$62.8B" },
+              "fy2025_consulting": { "type": "string", "example": "$20.2B" },
+              "fy2026_interim_growth": { "type": "string", "example": "+4.1%" }
+            }
+          }
+        },
+        "required": ["data"]
+      },
+      "WorkflowStepsResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "step_number": { "type": "integer", "example": 1 },
+                "name_ar": { "type": "string", "example": "استيعاب المعايير" },
+                "name_en": { "type": "string", "example": "Intake & Standards Ingestion" },
+                "governance_checkpoint": { "type": "boolean", "example": false }
+              }
+            }
+          }
+        },
+        "required": ["data"]
+      },
+      "DeliverablesResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string", "example": "DELIV-01" },
+                "title_en": { "type": "string", "example": "Pilot Quality Assessment Report" },
+                "delivery_week": { "type": "integer", "example": 2 }
+              }
+            }
+          }
+        },
+        "required": ["data"]
+      },
+      "CreateReviewRequest": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Sample Architecture Review"
+          },
+          "scope": {
+            "type": "string",
+            "example": "Sprint S1 Quality Gate"
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["standard", "expedited", "urgent"],
+            "example": "standard"
+          }
+        },
+        "required": ["title", "scope"]
+      },
+      "ReviewResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 101
+              },
+              "code": {
+                "type": "string",
+                "example": "REV-2026-001"
+              },
+              "status": {
+                "type": "string",
+                "example": "PENDING_REVIEW"
+              },
+              "title": {
+                "type": "string",
+                "example": "Sample Architecture Review"
+              }
+            },
+            "required": ["id", "code", "status"]
+          }
+        },
+        "required": ["data"]
+      }
+    }
+  }
+}
+

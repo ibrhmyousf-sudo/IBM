@@ -1,0 +1,167 @@
+{
+  "$schema": "../stack.schema.json",
+  "version": "4.2.2",
+  "architecture": {
+    "hmvc": false,
+    "monolith": true
+  },
+  "stacks": {
+    "backend": {
+      "laravel": false,
+      "dotnet": false,
+      "node": false
+    },
+    "frontend": {
+      "vue": false,
+      "react": false,
+      "angular": true,
+      "blade": false,
+      "tanstack": false
+    },
+    "api_docs": {
+      "json_openapi": false,
+      "postman": false
+    },
+    "workflows": {
+      "generate_module": false,
+      "generate_crud": false,
+      "generate_tests": true,
+      "git_hooks": true,
+      "sync_localization": true,
+      "audit_security": true,
+      "bcas_init": true,
+      "review_spec": true,
+      "handoff": true,
+      "cycle_handoff": true,
+      "sprint_plan": true,
+      "seed_feature": true,
+      "client_sdk": true,
+      "drift_radar": true,
+      "arch_visualize": true,
+      "predict_perf": true,
+      "refactor_legacy": true,
+      "apply_delta": true,
+      "eng_gate": true,
+      "reverse_intake": true,
+      "pentest_suite": true,
+      "pentest_postman": true,
+      "pmtool_sync": true,
+      "security_cicd": true
+    },
+    "client_sdk": {
+      "typescript": false,
+      "dart": false
+    },
+    "context_hub": {
+      "layout": "auto",
+      "hub_root": "docs/project-context-hub",
+      "enforce_two_gate": true,
+      "verify_feature_srd": true
+    }
+  },
+  "prompts": {
+    "auto_persona": true,
+    "output_formatting": true,
+    "confidence_scoring": true
+  },
+  "token_economy": {
+    "caveman_mode": true,
+    "max_file_reads_per_turn": 6,
+    "forbid_full_repo_scan": true,
+    "telemetry_mode": "lean_executive_summary"
+  },
+  "bcas": {
+    "enabled": true,
+    "project_context_path": "docs/business-context/PROJECT_CONTEXT.md",
+    "features_dir": "docs/business-context/features",
+    "codebase_map_path": ".ai/context/CODEBASE_MAP.md",
+    "reviewer_prompt_path": "docs/business-context/AI_REVIEWER_PROMPT.md",
+    "enforce_ready_gate": true
+  },
+  "process": {
+    "preset": "sdd-standard",
+    "extensions": [
+      "arch-guard",
+      "owasp-guard",
+      "i18n-guard",
+      "ci-guard",
+      "compliance-guard"
+    ],
+    "agent_exports": [
+      "cursor",
+      "copilot",
+      "claude",
+      "gemini",
+      "windsurf"
+    ]
+  },
+  "compliance": {
+    "enabled": true,
+    "auto_audit_on_cycle": true,
+    "regions": [
+      "ksa",
+      "global"
+    ],
+    "standards": [
+      "zatca",
+      "sdaia-pdpl",
+      "nca",
+      "dga",
+      "sama",
+      "cst",
+      "wcag",
+      "owasp"
+    ]
+  },
+  "mcp": {
+    "figma": false,
+    "database": true,
+    "sentry": false
+  },
+  "execution": {
+    "default_mode": "standard",
+    "team_mode": true,
+    "autonomous_mode": true,
+    "max_remediation_iterations": 3
+  },
+  "security_profile": {
+    "surfaces": {
+      "web_spa": true,
+      "rest_api": false,
+      "ai_llm": false,
+      "mobile_app": false
+    },
+    "features": {
+      "password_login": true,
+      "otp_auth": true,
+      "password_reset": true,
+      "invitations": true,
+      "cookie_auth": false,
+      "multi_tenant": true,
+      "reports_and_dashboards": true,
+      "pdf_or_excel_exports": true,
+      "file_uploads": true,
+      "notifications": true,
+      "transactional_workflows": true,
+      "webhooks": false,
+      "third_party_outbound_apis": true,
+      "background_jobs_dashboard": false,
+      "rag_retrieval": false,
+      "agentic_tool_execution": false
+    },
+    "hosting": {
+      "model": "cloud",
+      "containerized": true,
+      "internet_facing": true,
+      "holds_regulated_pii": true,
+      "critical_national_system": false,
+      "saudi_nca_scope": true,
+      "government_dga_scope": false
+    },
+    "cicd": {
+      "provider": "github",
+      "require_manual_prod_approval": true,
+      "enforce_api_backward_compat": true
+    }
+  }
+}

@@ -1,0 +1,1 @@
+/home/fotta/workspace/apps/stack-aware-ai-engineering/bin/front-cross-dependancy.js

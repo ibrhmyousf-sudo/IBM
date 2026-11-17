@@ -1,0 +1,561 @@
+{
+  "updatedAt": "2026-11-17",
+  "projectCode": "IBR",
+  "templateSource": null,
+  "entities": {
+    "CMP-01": {
+      "type": "Component",
+      "dbId": null,
+      "dropdownValue": null,
+      "title": "Global Corporate Web Shell & Theming"
+    },
+    "CMP-02": {
+      "type": "Component",
+      "dbId": null,
+      "dropdownValue": null,
+      "title": "Value Proposition & Service Experience"
+    },
+    "CMP-03": {
+      "type": "Component",
+      "dbId": null,
+      "dropdownValue": null,
+      "title": "Commercial Model, Governance & Simulation"
+    },
+    "EPC-01": {
+      "type": "Epic",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "CMP-01",
+      "releaseCode": "REL-01",
+      "title": "Global Navigation, Theming & Academic Governance Shell"
+    },
+    "EPC-02": {
+      "type": "Epic",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "CMP-02",
+      "releaseCode": "REL-01",
+      "title": "Value Proposition, SEC Evidence & 6-Step Review Workflow"
+    },
+    "EPC-03": {
+      "type": "Epic",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "CMP-03",
+      "releaseCode": "REL-01",
+      "title": "Commercial Transparency, Trust Governance & Simulation Form"
+    },
+    "FEATURE-001": {
+      "type": "Feature",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "EPC-01",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Global Microsite Architecture, Navigation & Design System"
+    },
+    "FEATURE-002": {
+      "type": "Feature",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "EPC-02",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Home Value Proposition & SEC-Verified Financial Metrics"
+    },
+    "FEATURE-003": {
+      "type": "Feature",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "EPC-02",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Offering Review Sequence & Pilot Deliverables Workflow"
+    },
+    "FEATURE-005": {
+      "type": "Feature",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "EPC-03",
+      "releaseCode": "REL-01",
+      "sprintCode": "S2",
+      "title": "Commercial Framing, Pricing & TCO Transparency Model"
+    },
+    "FEATURE-006": {
+      "type": "Feature",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "EPC-03",
+      "releaseCode": "REL-01",
+      "sprintCode": "S2",
+      "title": "Trust, Governance & Evidence Classification Taxonomy"
+    },
+    "FEATURE-007": {
+      "type": "Feature",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "EPC-03",
+      "releaseCode": "REL-01",
+      "sprintCode": "S3",
+      "title": "Pilot Assessment Interactive Demonstration Simulation"
+    },
+    "STR-001-01": {
+      "type": "Story",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "FEATURE-001",
+      "epicId": "EPC-01",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Responsive Layout, Color Tokens and Global Header/Footer Navigation"
+    },
+    "STR-001-02": {
+      "type": "Story",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "FEATURE-001",
+      "epicId": "EPC-01",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Academic Disclaimer Banner and Accessibility Baseline Navigation"
+    },
+    "STR-002-01": {
+      "type": "Story",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "FEATURE-002",
+      "epicId": "EPC-02",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Hero Section, Value Proposition Cards and AI-Human Visual Flow"
+    },
+    "STR-002-02": {
+      "type": "Story",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "FEATURE-002",
+      "epicId": "EPC-02",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Verified IBM SEC Financial Metrics and Corporate Scale Data Grid"
+    },
+    "STR-003-01": {
+      "type": "Story",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "FEATURE-003",
+      "epicId": "EPC-02",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Six-Step Quality Review Sequence Visualization & Decision Gate Flow"
+    },
+    "STR-003-02": {
+      "type": "Story",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "FEATURE-003",
+      "epicId": "EPC-02",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Proposed Pilot Deliverables List & AI Limitation Boundary Section"
+    },
+    "STR-005-01": {
+      "type": "Story",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "FEATURE-005",
+      "epicId": "EPC-03",
+      "releaseCode": "REL-01",
+      "sprintCode": "S2",
+      "title": "Proposed Customer Pilot Pricing Cards with Mandatory Placeholders"
+    },
+    "STR-005-02": {
+      "type": "Story",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "FEATURE-005",
+      "epicId": "EPC-03",
+      "releaseCode": "REL-01",
+      "sprintCode": "S2",
+      "title": "Internal Total Cost of Ownership Software & Operation Breakdown"
+    },
+    "STR-006-01": {
+      "type": "Story",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "FEATURE-006",
+      "epicId": "EPC-03",
+      "releaseCode": "REL-01",
+      "sprintCode": "S2",
+      "title": "Six-Tier Evidence Classification Badging and Official Source References"
+    },
+    "STR-006-02": {
+      "type": "Story",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "FEATURE-006",
+      "epicId": "EPC-03",
+      "releaseCode": "REL-01",
+      "sprintCode": "S2",
+      "title": "Governance Boundaries, Data Access Controls and Privacy Disclosures"
+    },
+    "STR-007-01": {
+      "type": "Story",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "FEATURE-007",
+      "epicId": "EPC-03",
+      "releaseCode": "REL-01",
+      "sprintCode": "S3",
+      "title": "Interactive Pilot Assessment Demonstration Simulation Modal Form"
+    },
+    "STR-007-02": {
+      "type": "Story",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "FEATURE-007",
+      "epicId": "EPC-03",
+      "releaseCode": "REL-01",
+      "sprintCode": "S3",
+      "title": "Form Client-Side Validation, Simulation Confirmation and Reset Controls"
+    },
+    "TSK-001-01": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-001-01",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Scaffold semantic HTML5 layouts with IBM corporate blue, white, and grey CSS design tokens"
+    },
+    "TSK-001-02": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-001-01",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Implement responsive top navigation bar and unified multi-page footer shell"
+    },
+    "TSK-001-03": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-001-01",
+      "department": "QA",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Verify cross-browser responsive breakpoints and HTML5 validator compliance"
+    },
+    "TSK-001-04": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-001-02",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Render Nexford MBA Capstone academic disclaimer prominently across all 4 page footers"
+    },
+    "TSK-001-05": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-001-02",
+      "department": "QA",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Verify accessibility ARIA landmarks, focus rings, and keyboard tab order"
+    },
+    "TSK-002-01": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-002-01",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Build Page 1 Hero section with core value proposition cards and AI-human synergy visual"
+    },
+    "TSK-002-02": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-002-01",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Bind primary CTA button linking to pilot assessment demonstration simulation"
+    },
+    "TSK-002-03": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-002-01",
+      "department": "QA",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Test visual layout and typography consistency across desktop, tablet, and mobile viewports"
+    },
+    "TSK-002-04": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-002-02",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Construct verified SEC Form 10-K and 9M 2026 financial comparison tables"
+    },
+    "TSK-002-05": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-002-02",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Implement corporate scale highlight cards for 150,000+ consultants across 175+ countries"
+    },
+    "TSK-002-06": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-002-02",
+      "department": "QA",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Assert all corporate financial figures match SEC Form 10-K baseline evidence"
+    },
+    "TSK-003-01": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-003-01",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Construct 6-step visual sequence cards from document submission to professional approval"
+    },
+    "TSK-003-02": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-003-01",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Implement human reviewer decision gate visual highlights and exception classification tags"
+    },
+    "TSK-003-03": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-003-01",
+      "department": "QA",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Verify sequence readability and responsive vertical card stacking on mobile viewports"
+    },
+    "TSK-003-04": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-003-02",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Render proposed pilot deliverables checklist and agreed acceptance criteria cards"
+    },
+    "TSK-003-05": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-003-02",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Add professional boundary section stating AI does not make final legal/financial approvals"
+    },
+    "TSK-003-06": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-003-02",
+      "department": "QA",
+      "releaseCode": "REL-01",
+      "sprintCode": "S1",
+      "title": "Verify evidence source citations and disclaimer visibility on Page 2"
+    },
+    "TSK-005-01": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-005-01",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S2",
+      "title": "Build Customer Pilot Pricing package card preserving exact visible placeholder markers"
+    },
+    "TSK-005-02": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-005-01",
+      "department": "QA",
+      "releaseCode": "REL-01",
+      "sprintCode": "S2",
+      "title": "Verify zero invented pricing figures appear across customer-facing commercial cards"
+    },
+    "TSK-005-03": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-005-02",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S2",
+      "title": "Construct Internal TCO breakdown with watsonx Orchestrate historical pricing snapshots"
+    },
+    "TSK-005-04": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-005-02",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S2",
+      "title": "Add interactive tooltips for unvalidated implementation and governance placeholders"
+    },
+    "TSK-005-05": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-005-02",
+      "department": "QA",
+      "releaseCode": "REL-01",
+      "sprintCode": "S2",
+      "title": "Test tooltip hover and click interactions with accessible keyboard focus states"
+    },
+    "TSK-006-01": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-006-01",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S2",
+      "title": "Implement 6-tier evidence label badge CSS classes and tooltip definitions"
+    },
+    "TSK-006-02": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-006-01",
+      "department": "QA",
+      "releaseCode": "REL-01",
+      "sprintCode": "S2",
+      "title": "Validate each corporate claim carries an exact canonical evidence taxonomy badge"
+    },
+    "TSK-006-03": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-006-02",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S2",
+      "title": "Render data governance, access control, and privacy policy sections on Page 4"
+    },
+    "TSK-006-04": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-006-02",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S2",
+      "title": "Implement Academic Resources footer links with pending download tooltip badges"
+    },
+    "TSK-006-05": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-006-02",
+      "department": "QA",
+      "releaseCode": "REL-01",
+      "sprintCode": "S2",
+      "title": "Test resource link states and privacy disclosure readability across viewports"
+    },
+    "TSK-007-01": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-007-01",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S3",
+      "title": "Implement accessible modal dialog with backdrop for Request a Pilot Assessment"
+    },
+    "TSK-007-02": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-007-01",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S3",
+      "title": "Display prominent Academic Concept Simulation notification banner in modal header"
+    },
+    "TSK-007-03": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-007-01",
+      "department": "QA",
+      "releaseCode": "REL-01",
+      "sprintCode": "S3",
+      "title": "Assert zero external network calls occur upon modal submission"
+    },
+    "TSK-007-04": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-007-02",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S3",
+      "title": "Implement client-side form validation for organization name, email, and scope inputs"
+    },
+    "TSK-007-05": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-007-02",
+      "department": "FE",
+      "releaseCode": "REL-01",
+      "sprintCode": "S3",
+      "title": "Render simulation success confirmation banner and form reset controls"
+    },
+    "TSK-007-06": {
+      "type": "Task",
+      "dbId": null,
+      "dropdownValue": null,
+      "parentId": "STR-007-02",
+      "department": "QA",
+      "releaseCode": "REL-01",
+      "sprintCode": "S3",
+      "title": "Test client validation error messages, focus trapping, and Escape key dismissal"
+    }
+  },
+  "releases": {
+    "REL-01": "Release 1"
+  },
+  "sprints": {
+    "S1": "Sprint 1",
+    "S2": "Sprint 2",
+    "S3": "Sprint 3"
+  }
+}
