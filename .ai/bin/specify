@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# Specify CLI Executable Entrypoint
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-node "$SCRIPT_DIR/specify.js" "$@"
