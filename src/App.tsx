@@ -7,16 +7,31 @@ import { OfferingPage } from './modules/workflow/pages/OfferingPage';
 import { PricingPage } from './modules/pricing/PricingPage';
 import { TrustPage } from './modules/trust/TrustPage';
 
+const getRelativeRoute = (pathname: string): string => {
+  const base = import.meta.env.BASE_URL || '/';
+  if (base !== '/' && pathname.startsWith(base)) {
+    const stripped = pathname.slice(base.length - 1);
+    return stripped.startsWith('/') ? stripped : `/${stripped}`;
+  }
+  return pathname || '/';
+};
+
+const formatTargetUrl = (route: string): string => {
+  const base = import.meta.env.BASE_URL || '/';
+  if (base === '/') return route;
+  return `${base.replace(/\/$/, '')}${route}`;
+};
+
 export const App: React.FC = () => {
   const [currentRoute, setCurrentRoute] = useState<string>(() => {
-    return window.location.pathname || '/';
+    return getRelativeRoute(window.location.pathname);
   });
 
   const [isPilotModalOpen, setIsPilotModalOpen] = useState(false);
 
   useEffect(() => {
     const handlePopState = () => {
-      setCurrentRoute(window.location.pathname || '/');
+      setCurrentRoute(getRelativeRoute(window.location.pathname));
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
@@ -24,7 +39,7 @@ export const App: React.FC = () => {
 
   const navigate = (route: string) => {
     setCurrentRoute(route);
-    window.history.pushState({}, '', route);
+    window.history.pushState({}, '', formatTargetUrl(route));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
