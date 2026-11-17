@@ -27,7 +27,7 @@ export const ShellLayout: React.FC<ShellLayoutProps> = ({
   return (
     <div className="min-h-screen flex flex-col bg-background text-text-primary" data-testid="shell-layout">
       {/* Top Corporate Navigation Bar */}
-      <header className="sticky top-0 z-40 bg-surface/90 backdrop-blur-md border-b border-border shadow-xs">
+      <header className="sticky top-0 z-40 glass-header shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 gap-4">
             <BrandHeader onNavigateHome={() => onNavigate('/')} />

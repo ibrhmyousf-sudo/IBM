@@ -15,11 +15,11 @@ export const BrandHeader: React.FC<BrandHeaderProps> = ({ onNavigateHome }) => {
       onClick={onNavigateHome}
       role="banner"
     >
-      <div className="brand-logo-mark min-w-[2.5rem] w-10 h-10 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black text-lg shadow-md shrink-0 group-hover:bg-blue-700 transition-colors">
+      <div className="brand-logo-mark min-w-[2.5rem] w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-hover)] text-white flex items-center justify-center font-black text-lg shadow-md shadow-[var(--color-primary-glow)] shrink-0 group-hover:scale-105 transition-all">
         IBM
       </div>
       <div className="flex flex-col">
-        <span className="font-extrabold text-base sm:text-lg leading-tight tracking-tight text-text-primary group-hover:text-blue-600 transition-colors">
+        <span className="font-extrabold text-base sm:text-lg leading-tight tracking-tight text-text-primary group-hover:text-[var(--color-primary)] transition-colors">
           {t('brand.title')}
         </span>
         <span className="text-xs text-text-secondary leading-tight mt-0.5">

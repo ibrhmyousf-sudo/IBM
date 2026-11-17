@@ -12,7 +12,7 @@ export const DeliverablesGrid: React.FC<DeliverablesGridProps> = ({ deliverables
   const { t } = useI18n();
 
   return (
-    <section className="deliverables-section py-12 border-t border-border" aria-labelledby="deliv-heading">
+    <section className="deliverables-section py-12 border-t border-[var(--color-border)]" aria-labelledby="deliv-heading">
       <div className="text-center max-w-3xl mx-auto mb-12">
         <h2 id="deliv-heading" className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight">
           {t('deliverables.sectionTitle')}
@@ -29,7 +29,7 @@ export const DeliverablesGrid: React.FC<DeliverablesGridProps> = ({ deliverables
             data-testid={deliv.testId}
             variant="default"
             padding="lg"
-            className="flex flex-col justify-between border border-border bg-surface hover:shadow-md transition-shadow"
+            className="glass-card flex flex-col justify-between border border-[var(--glass-border)] shadow-md"
           >
             <div>
               <div className="flex items-center justify-between mb-3">
@@ -48,7 +48,7 @@ export const DeliverablesGrid: React.FC<DeliverablesGridProps> = ({ deliverables
               </p>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
+            <div className="mt-6 pt-4 border-t border-[var(--color-border)]/60 flex items-center justify-between">
               <span className="text-xs font-semibold text-text-muted uppercase tracking-wider">
                 {t('workflowCommon.provenanceLabel')}
               </span>

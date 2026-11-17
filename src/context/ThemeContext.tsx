@@ -1,10 +1,13 @@
 import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
-import type { Theme } from '../types';
+import type { Theme, ColorPalette } from '../types';
 
 interface ThemeContextValue {
   theme: Theme;
+  palette: ColorPalette;
   toggleTheme: () => void;
   setTheme: (t: Theme) => void;
+  togglePalette: () => void;
+  setPalette: (p: ColorPalette) => void;
 }
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
@@ -13,6 +16,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [theme, setTheme] = useState<Theme>(() => {
     const saved = localStorage.getItem('ibm_v2_theme') as Theme | null;
     return saved === 'dark' || saved === 'light' ? saved : 'light';
+  });
+
+  const [palette, setPalette] = useState<ColorPalette>(() => {
+    const saved = localStorage.getItem('ibm_v2_palette') as ColorPalette | null;
+    return saved === 'blue' ? 'blue' : 'amber'; // Amber-Gold default
   });
 
   useEffect(() => {
@@ -25,11 +33,23 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   }, [theme]);
 
+  useEffect(() => {
+    localStorage.setItem('ibm_v2_palette', palette);
+    document.documentElement.setAttribute('data-palette', palette);
+  }, [palette]);
+
   const toggleTheme = () => {
     setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
   };
 
-  const value = useMemo(() => ({ theme, toggleTheme, setTheme }), [theme]);
+  const togglePalette = () => {
+    setPalette(prev => (prev === 'amber' ? 'blue' : 'amber'));
+  };
+
+  const value = useMemo(
+    () => ({ theme, palette, toggleTheme, setTheme, togglePalette, setPalette }),
+    [theme, palette]
+  );
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
@@ -41,4 +61,3 @@ export const useTheme = (): ThemeContextValue => {
   }
   return context;
 };
-

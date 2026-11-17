@@ -5,6 +5,7 @@
 
 export type Locale = 'en' | 'ar';
 export type Theme = 'light' | 'dark';
+export type ColorPalette = 'amber' | 'blue';
 
 export type UILifecycleState = 'loading' | 'empty' | 'single' | 'populated' | 'disabled' | 'error';
 

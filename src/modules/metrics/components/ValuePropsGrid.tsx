@@ -14,26 +14,26 @@ export const ValuePropsGrid: React.FC<ValuePropsGridProps> = ({ propsList }) => 
     switch (iconName) {
       case 'shield-check':
         return (
-          <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-7 h-7 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
           </svg>
         );
       case 'filter-funnel':
         return (
-          <svg className="w-8 h-8 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-7 h-7 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
           </svg>
         );
       case 'user-check':
         return (
-          <svg className="w-8 h-8 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-7 h-7 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
           </svg>
         );
       case 'trending-up':
       default:
         return (
-          <svg className="w-8 h-8 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-7 h-7 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
           </svg>
         );
@@ -58,20 +58,20 @@ export const ValuePropsGrid: React.FC<ValuePropsGridProps> = ({ propsList }) => 
             data-testid={prop.testId}
             variant="default"
             padding="lg"
-            className="flex flex-col justify-between hover:shadow-md transition-shadow group border border-border bg-surface"
+            className="glass-card flex flex-col justify-between group border border-[var(--glass-border)] shadow-md"
           >
             <div>
-              <div className="p-3 bg-surface-muted rounded-xl w-fit mb-4 group-hover:scale-105 transition-transform">
+              <div className="p-3.5 bg-[var(--color-primary-light)]/60 rounded-2xl w-fit mb-4 group-hover:scale-110 transition-transform shadow-xs">
                 {getIcon(prop.icon)}
               </div>
-              <h3 className="text-lg font-bold text-text-primary mb-2">
+              <h3 className="text-lg font-bold text-text-primary mb-2 group-hover:text-[var(--color-primary)] transition-colors">
                 {t(prop.titleKey)}
               </h3>
               <p className="text-sm text-text-secondary leading-relaxed">
                 {t(prop.descKey)}
               </p>
             </div>
-            <div className="mt-4 pt-4 border-t border-border/50 text-xs font-semibold text-blue-600 dark:text-blue-400">
+            <div className="mt-4 pt-4 border-t border-[var(--color-border)]/50 text-xs font-bold text-[var(--color-primary)]">
               {prop.id} • {t('props.pillarLabel')}
             </div>
           </AppCard>

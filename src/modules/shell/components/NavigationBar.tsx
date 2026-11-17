@@ -17,7 +17,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
   onToggleMobileMenu
 }) => {
   const { t, toggleLocale, locale } = useI18n();
-  const { theme, toggleTheme } = useTheme();
+  const { theme, palette, toggleTheme, togglePalette } = useTheme();
 
   const navLinks = [
     { key: 'nav.home', route: '/', testId: 'shell-nav-link-home' },
@@ -37,10 +37,10 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
               key={link.route}
               data-testid={link.testId}
               onClick={() => onNavigate(link.route)}
-              className={`nav-link px-3.5 py-2 rounded-lg text-sm font-medium transition-all ${
+              className={`nav-link px-3.5 py-2 rounded-xl text-sm font-medium transition-all ${
                 isActive
-                  ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400 font-bold shadow-xs'
-                  : 'text-text-secondary hover:text-text-primary hover:bg-surface-muted'
+                  ? 'bg-[var(--color-primary-light)] text-[var(--color-primary)] font-bold shadow-xs border border-[var(--color-primary)]/30 backdrop-blur-md'
+                  : 'text-text-secondary hover:text-text-primary hover:bg-surface-muted/60'
               }`}
               aria-current={isActive ? 'page' : undefined}
             >
@@ -67,23 +67,36 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
 
         <div className="hidden sm:block w-px h-5 bg-border mx-1"></div>
 
+        {/* Color Palette Toggle (Amber Gold <-> Corporate Blue) */}
+        <button
+          type="button"
+          data-testid="shell-btn-palette-toggle"
+          onClick={togglePalette}
+          className="px-2.5 py-1.5 rounded-xl border border-[var(--color-border)] bg-[var(--glass-bg)] backdrop-blur-md text-text-secondary hover:text-text-primary hover:border-[var(--color-primary)] transition-all text-xs font-bold flex items-center gap-1.5 shadow-2xs"
+          title={palette === 'amber' ? 'Active: Amber-Gold Theme (Click for Blue)' : 'Active: Blue Theme (Click for Amber-Gold)'}
+          aria-label="Toggle Color Palette"
+        >
+          <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-primary)] shadow-xs animate-pulse" />
+          <span className="hidden md:inline">{palette === 'amber' ? 'Gold' : 'Blue'}</span>
+        </button>
+
         {/* Locale Toggle */}
         <button
           type="button"
           data-testid="shell-btn-locale-toggle"
           onClick={toggleLocale}
-          className="px-2.5 py-1.5 rounded-lg border border-border text-text-secondary hover:text-text-primary hover:bg-surface-muted transition-colors text-xs font-bold uppercase tracking-wider"
+          className="px-2.5 py-1.5 rounded-xl border border-[var(--color-border)] bg-[var(--glass-bg)] backdrop-blur-md text-text-secondary hover:text-text-primary hover:border-[var(--color-primary)] transition-all text-xs font-bold uppercase tracking-wider shadow-2xs"
           aria-label={t('nav.toggleLocale')}
         >
           {locale === 'en' ? 'العربية' : 'English'}
         </button>
 
-        {/* Theme Toggle */}
+        {/* Theme Toggle (Light / Dark) */}
         <button
           type="button"
           data-testid="shell-btn-theme-toggle"
           onClick={toggleTheme}
-          className="p-2 rounded-lg border border-border text-text-secondary hover:text-text-primary hover:bg-surface-muted transition-colors"
+          className="p-2 rounded-xl border border-[var(--color-border)] bg-[var(--glass-bg)] backdrop-blur-md text-text-secondary hover:text-text-primary hover:border-[var(--color-primary)] transition-all shadow-2xs"
           aria-label={t('nav.toggleTheme')}
         >
           {theme === 'dark' ? (
@@ -112,7 +125,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
           type="button"
           data-testid="shell-btn-hamburger"
           onClick={onToggleMobileMenu}
-          className="lg:hidden p-2 rounded-lg border border-border text-text-secondary hover:text-text-primary hover:bg-surface-muted transition-colors"
+          className="lg:hidden p-2 rounded-xl border border-border text-text-secondary hover:text-text-primary hover:bg-surface-muted transition-colors"
           aria-label={t('nav.menu')}
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
