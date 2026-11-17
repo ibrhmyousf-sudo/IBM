@@ -9,7 +9,7 @@ export const AiHumanWorkflowDiagram: React.FC = () => {
     <section className="diagram-section py-12 md:py-16 border-t border-[var(--color-border)]" aria-labelledby="flow-heading">
       <div className="text-center max-w-3xl mx-auto mb-10">
         <h2 id="flow-heading" className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight">
-          {t('workflow.sectionTitle')}
+          { t('workflow.sectionTitle') }
         </h2>
         <p className="text-base text-text-secondary mt-2">
           {t('workflow.sectionSubtitle')}
