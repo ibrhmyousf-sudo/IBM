@@ -5,10 +5,10 @@ import { resolve } from 'path';
 
 // GitHub Pages repository subpath auto-detection:
 // If running in GitHub Actions, GITHUB_REPOSITORY is "owner/repo" -> base is "/repo/"
-// Otherwise defaults to process.env.BASE_URL or "./" for portable relative paths.
+// Otherwise defaults to process.env.BASE_URL or "/IBM/" for the target IBM repository.
 const repoName = process.env.GITHUB_REPOSITORY
   ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/`
-  : './';
+  : '/IBM/';
 const base = process.env.BASE_URL || repoName;
 
 export default defineConfig({

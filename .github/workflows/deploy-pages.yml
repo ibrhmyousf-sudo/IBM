@@ -39,7 +39,7 @@ jobs:
       - name: Build production bundle
         run: npm run build
         env:
-          BASE_URL: /ibm-consult/
+          BASE_URL: /${{ github.event.repository.name }}/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
