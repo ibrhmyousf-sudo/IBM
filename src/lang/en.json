@@ -7,7 +7,7 @@
   "nav": {
     "home": "Home",
     "offering": "Service Offering & Process",
-    "pricing": "Pricing & Model",
+    "pricing": "Pricing",
     "trust": "Trust & Governance",
     "cta": "Simulate Pilot Request",
     "toggleTheme": "Toggle Theme",
@@ -57,7 +57,7 @@
     "interimRevenue": "IBM Consulting Revenue — 9M 2026 (vs. $15.706B 9M 2025, +1.5% YoY)",
     "interimConsulting": "IBM Consulting Revenue — 9M 2026",
     "q3Revenue": "IBM Consulting Revenue — Q3 2025 -> Q3 2026 ($5,324M -> $5,335M, +0.2% as reported)",
-    "q3Consulting": "IBM Consulting Segment Profit Margin — Q3 2025 -> Q3 2026 (12.9% -> 12.2%, IBM-reported -0.6 pts; Gross Margin 29.3% -> 27.4%, -1.9 pts)",
+    "q3Consulting": "IBM Consulting Segment Profit Margin — Q3 2025 -> Q3 2026 (12.9% -> 12.2%, -0.6 pts (calculated from unrounded segment figures); Gross Margin 29.3% -> 27.4%, -1.9 pts)",
     "secTag": "IBM FY2025 Form 10-K (S1)",
     "ibmTag": "IBM Q3 2026 Form 10-Q (S2)",
     "scaleCard1Title": "IBM FY2025 Form 10-K (S1)",
@@ -156,30 +156,8 @@
     "desc": "Demonstration only. Nothing is sent to IBM or any external system."
   },
   "pricing": {
-    "pageTitle": "Pricing & Financial Model (Base & Downside)",
-    "pageSubtitle": "Modeled service fee ($15,000) separated from historical platform cost proxy ($567/mo on 9-Nov-2026, S5) with 3-year Base and Downside figures.",
-    "phase1Tag": "Modeled Fee vs. Platform Proxy",
-    "phase1Title": "$15,000 Modeled Fee & $567 Proxy",
-    "phase1Desc": "Unvalidated student estimate per 6-week engagement (8 docs, 35% target margin benchmark) vs. historical 9-Nov-2026 Essentials capture ($567/mo; $6,804/yr; $20,412 3-yr, S5).",
-    "phase1Period": "$15,000 / $567",
-    "phase1Item1": "• $15,000 modeled fee is an unvalidated student estimate, not an official IBM price or confirmed willingness to pay",
-    "phase1Item2": "• $567/mo Essentials price (9-Nov-2026 capture, S5) is a historical model proxy ($6,804/yr; $20,412 3-yr), not a current universal IBM quotation",
-    "phase1Item3": "• Capacity: 1.0 FTE × 1,600 hrs/yr at 24 hrs/engagement (8 docs × 3 hrs) = 66 engagements/yr at $75/hr ($120,000/yr)",
-    "phase2Tag": "3-Year Base & Downside Model",
-    "phase2Badge": "Includes Y1 -$67,804 Downside",
-    "phase2Title": "Base & Downside Cash Flows",
-    "phase2Desc": "Modeled service-level contribution & net cash flow (same-year collection/payment). Excludes unallocated corporate overhead, sales/acquisition costs, taxes, capex, and financing.",
-    "phase2Period": "Base $928,188 / Downside $52,188",
-    "phase2Item1": "• Base net annual cash flow: Y1 $5,196 | Y2 $278,996 | Y3 $643,996 | 3-yr total $928,188 (cumulative: $5,196 -> $284,192 -> $928,188)",
-    "phase2Item2": "• Downside net annual cash flow: Y1 -$67,804 | Y2 $16,196 | Y3 $103,796 | 3-yr total $52,188 (cumulative: -$67,804 -> -$51,608 -> $52,188)",
-    "phase2Item3": "• Downside 3-yr costs: $142,804 (Y1) + $133,804 (Y2) + $136,204 (Y3) = $412,812 (Y1 setup: $6,000 rules, $5,000 security; $400/eng data prep; $3,000/yr governance)",
-    "phase3Tag": "Baseline Ratio & Benchmarks",
-    "phase3Title": "375.0% Ratio & Price Benchmarks",
-    "phase3Desc": "Client baseline: 8 docs × 4 hrs × $125/hr = $4,000/engagement. Ratio: $15,000 / $4,000 = 375.0% (Modeled Service Fee / Estimated Client Baseline Review Cost).",
-    "phase3Period": "Floor $13,316.52 / Target $20,486.95",
-    "phase3Item1": "• 375.0% is a price-to-baseline-cost ratio — NOT time savings, ROI, or demonstrated customer value",
-    "phase3Item2": "• Downside 3-yr cost floor per engagement: $412,812 / 31 = $13,316.52",
-    "phase3Item3": "• Academic target price at 35% contribution margin: $13,316.52 / (1 - 35%) = $20,486.95 (unvalidated model output)"
+    "pageTitle": "Quality Review Pilot",
+    "pageSubtitle": "Proposed academic estimate per engagement — not an official IBM commercial offer"
   },
   "trust": {
     "pageTitle": "Trust, Governance & Proposed Controls",
@@ -194,11 +172,7 @@
     "boundaryTitle": "Mandatory Human Accountability",
     "boundaryText": "Automated first-pass checks screen against a customer-approved checklist and route items or HOLD / RETURN exceptions, while qualified human reviewers make final decisions and sign-off. Never autonomous.",
     "disclaimerHeading": "Academic Concept Notice",
-    "disclaimerText": "Student-developed MBA Capstone concept (Nexford University) by Ibrahem Soliman Yousef Soliman Zahr. Not an official IBM offering, approved product, or commercial commitment.",
-    "resourcesHeading": "Supporting Documents Status",
-    "resourceAppendix": "Research Appendix (DOCX)",
-    "resourceExcel": "Financial Model Workbook (XLSX)",
-    "statusPending": "NOT PUBLISHED IN REPO"
+    "disclaimerText": "Student-developed MBA Capstone concept (Nexford University) by Ibrahem Soliman Yousef Soliman Zahr. Not an official IBM offering, approved product, or commercial commitment."
   },
   "modal": {
     "title": "Local Pilot Demonstration",
