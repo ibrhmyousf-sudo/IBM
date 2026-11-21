@@ -1,9 +1,14 @@
 import React from 'react';
 import { useI18n } from '../../context/I18nContext';
 import { AppCard } from '../../components/AppCard';
+import { AppButton } from '../../components/AppButton';
 import { AiBoundaryCallout } from '../workflow/components/AiBoundaryCallout';
 
-export const TrustPage: React.FC = () => {
+export interface TrustPageProps {
+  onOpenPilotModal?: () => void;
+}
+
+export const TrustPage: React.FC<TrustPageProps> = ({ onOpenPilotModal }) => {
   const { t } = useI18n();
 
   return (
@@ -71,6 +76,27 @@ export const TrustPage: React.FC = () => {
           {t('governance.disclaimerText')}
         </p>
       </div>
+
+      {onOpenPilotModal && (
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 p-6 rounded-2xl glass-card border border-[var(--glass-border)] shadow-md">
+          <div className="space-y-1 text-center sm:text-start">
+            <h4 className="font-bold text-base text-text-primary">
+              {t('offeringConversion.title')}
+            </h4>
+            <p className="text-xs sm:text-sm text-text-secondary">
+              {t('offeringConversion.desc')}
+            </p>
+          </div>
+          <AppButton
+            variant="primary"
+            size="md"
+            data-testid="trust-btn-simulate"
+            onClick={onOpenPilotModal}
+          >
+            {t('nav.cta')}
+          </AppButton>
+        </div>
+      )}
     </div>
   );
 };

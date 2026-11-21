@@ -43,7 +43,7 @@
   },
   "financials": {
     "sectionTitle": "الأساس المالي لـ IBM Consulting والمصادر (S1–S5)",
-    "sectionSubtitle": "أرقام IBM Consulting من تقارير SEC (S1–S2) إلى جانب افتراضات نموذج D3 (رسوم نموذجية 15,000$ وبديل منصة تاريخي 567$/شهر بتاريخ 9 نوفمبر 2026 ضمن S5)",
+    "sectionSubtitle": "أرقام IBM Consulting من تقارير SEC (S1–S2) إلى جانب افتراضات نموذج D3 (رسوم نموذجية 15,000$ وPublished IBM list price captured on 9 November 2026, used as a platform cost input in the academic financial model (S5))",
     "toggleFY2025": "السنة المالية 2025 — IBM FY2025 Form 10-K (S1)",
     "toggleInterim": "9 أشهر 2026 وQ3 2025 -> Q3 2026 — IBM Q3 2026 Form 10-Q (S2)",
     "metricCol": "مؤشر / افتراض IBM Consulting",
@@ -65,7 +65,7 @@
     "scaleCard2Title": "IBM Q3 2026 Form 10-Q (S2)",
     "scaleCard2Desc": "إيرادات Consulting في 9 أشهر 2026 بقيمة 15.934B$ (+1.5% مقابل 15.706B$ في 9 أشهر 2025)؛ وفي Q3 2025 -> Q3 2026 من 5,324M$ إلى 5,335M$ (+0.2% كما أُعلن).",
     "scaleCard3Title": "Consulting Advantage والمصادر (S3–S5)",
-    "scaleCard3Desc": "يوضح S3 وصف IBM لـ Consulting Advantage بقرابة 150,000 استشاري؛ ويغطي S4 مشغلات وحدود مستخرج المستندات في watsonx Orchestrate؛ ويمثل S5 لقطة التسعير بتاريخ 9 نوفمبر 2026 (567$ بديل Essentials)."
+    "scaleCard3Desc": "يوضح S3 وصف IBM لـ Consulting Advantage بقرابة 150,000 استشاري؛ ويغطي S4 مشغلات وحدود مستخرج المستندات في watsonx Orchestrate؛ ويمثل S5 Published IBM list price captured on 9 November 2026, used as a platform cost input in the academic financial model."
   },
   "scale": {
     "sectionTitle": "سياق IBM Consulting ونطاق الفرضية",

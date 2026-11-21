@@ -4,124 +4,116 @@ import { AppCard } from '../../components/AppCard';
 import { AppButton } from '../../components/AppButton';
 
 export interface PricingPageProps {
-  onOpenPilotModal: () => void;
+  onOpenPilotModal?: () => void;
 }
 
 export const PricingPage: React.FC<PricingPageProps> = ({ onOpenPilotModal }) => {
-  const { t, locale } = useI18n();
-  const isAr = locale === 'ar';
+  const { t } = useI18n();
+  const isAr =
+    typeof document !== 'undefined' &&
+    (document.documentElement.dir === 'rtl' || document.documentElement.lang === 'ar');
+
+  const includedItems = isAr
+    ? [
+        'مدة التجربة: 6 أسابيع',
+        'نطاق المستندات: 8 مستندات معتمدة',
+        'نوع مستند واحد متفق عليه',
+        'قائمة تحقق واحدة معتمدة من العميل',
+        'فحص أولي بمساعدة الذكاء الاصطناعي',
+        'مراجعة بشرية واعتماد نهائي إلزامي',
+        'تقييم التجربة وملخص النتائج'
+      ]
+    : [
+        '6-week duration',
+        '8 approved documents',
+        'One agreed document type',
+        'One customer-approved checklist',
+        'AI-assisted first-pass screening',
+        'Human review and mandatory final sign-off',
+        'Pilot evaluation summary'
+      ];
 
   return (
-    <div className="py-12 space-y-12" data-testid="pricing-page">
+    <div className="py-12 space-y-10" data-testid="pricing-page">
       <div className="text-center max-w-3xl mx-auto space-y-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary)] text-xs font-bold mb-2 border border-[var(--color-primary)]/30">
-          <span className="pulse-active-dot" />
-          <span>{isAr ? 'نطاق تجريبي 6 أسابيع · 8 مستندات · 5 مخرجات' : '6-Week Pilot · 8 Documents · 5 Outputs'}</span>
+          <span>
+            {isAr
+              ? 'مقترح أكاديمي — ليس عرضاً تجارياً رسمياً من IBM'
+              : 'Academic proposal – not an IBM commercial offer'}
+          </span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-text-primary tracking-tight">
-          {t('pricing.pageTitle')}
+          {isAr ? 'عرض تجربة مراجعة الجودة' : 'Quality Review Pilot'}
         </h1>
         <p className="text-base text-text-secondary">
-          {t('pricing.pageSubtitle')}
+          {isAr
+            ? 'تقدير أكاديمي مقترح لكل تعاقد تجريبي — غير متحقق من استعداد المشترين للدفع أو من القيمة التجارية النهائية'
+            : 'Proposed academic estimate per engagement — not an official IBM commercial offer, and willingness to pay remains unvalidated'}
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <AppCard variant="default" padding="lg" data-testid="pricing-card-diagnostic" className="glass-card border border-[var(--glass-border)] shadow-md flex flex-col justify-between">
-          <div>
-            <div className="text-xs font-bold uppercase tracking-wider text-text-muted mb-2">{t('pricing.phase1Tag')}</div>
-            <h3 className="text-xl font-bold text-text-primary mb-2">{t('pricing.phase1Title')}</h3>
-            <p className="text-sm text-text-secondary mb-4">{t('pricing.phase1Desc')}</p>
-            <div className="text-2xl font-black data-highlight-num mb-4">{t('pricing.phase1Period')}</div>
-            <ul className="text-xs text-text-secondary space-y-2.5 mb-6">
-              <li>{t('pricing.phase1Item1')}</li>
-              <li>{t('pricing.phase1Item2')}</li>
-              <li>{t('pricing.phase1Item3')}</li>
+      <div className="max-w-2xl mx-auto">
+        <AppCard
+          variant="default"
+          padding="lg"
+          data-testid="pricing-card-pilot"
+          className="glass-card border border-[var(--glass-border)] shadow-md space-y-6"
+        >
+          <div className="border-b border-[var(--color-border)] pb-5 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
+            <div>
+              <div className="text-xs font-bold uppercase tracking-wider text-text-muted mb-1">
+                {isAr ? 'رسوم الخدمة الأكاديمية المقترحة' : 'Proposed Academic Service Fee'}
+              </div>
+              <h2 className="text-2xl font-bold text-text-primary">
+                {isAr ? 'عرض تجربة مراجعة الجودة' : 'Quality Review Pilot'}
+              </h2>
+            </div>
+            <div className="text-3xl font-black data-highlight-num text-[var(--color-primary)]">
+              $15,000
+              <span className="block text-xs font-medium text-text-muted mt-0.5">
+                {isAr ? 'لكل تعاقد تجريبي (تقدير أكاديمي)' : 'per engagement (academic estimate)'}
+              </span>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-text-primary">
+              {isAr ? 'ما يشمله العرض المقترح' : 'What is included'}
+            </h3>
+            <ul className="text-sm text-text-secondary space-y-2">
+              {includedItems.map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span className="text-[var(--color-primary)] font-bold">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
             </ul>
           </div>
-          <AppButton variant="outline" size="md" data-testid="pricing-btn-diagnostic" onClick={onOpenPilotModal} className="w-full">
-            {t('nav.cta')}
-          </AppButton>
-        </AppCard>
 
-        <AppCard variant="highlight" padding="lg" data-testid="pricing-card-pilot" className="glass-card border-2 border-[var(--color-primary)] shadow-2xl flex flex-col justify-between relative">
-          <div className="text-xs font-bold uppercase tracking-wider text-[var(--color-primary)] mb-2">{t('pricing.phase2Tag')}</div>
-          <h3 className="text-xl font-bold text-text-primary mb-2">{t('pricing.phase2Title')}</h3>
-          <p className="text-sm text-text-secondary mb-4">{t('pricing.phase2Desc')}</p>
-          <div className="text-xl font-black data-highlight-num mb-4">{t('pricing.phase2Period')}</div>
-          <ul className="text-xs text-text-secondary space-y-2.5 mb-6">
-            <li>{t('pricing.phase2Item1')}</li>
-            <li>{t('pricing.phase2Item2')}</li>
-            <li>{t('pricing.phase2Item3')}</li>
-          </ul>
-          <AppButton variant="primary" size="md" data-testid="pricing-btn-pilot" onClick={onOpenPilotModal} className="w-full">
-            {t('nav.cta')}
-          </AppButton>
-        </AppCard>
-
-        <AppCard variant="default" padding="lg" data-testid="pricing-card-scale" className="glass-card border border-[var(--glass-border)] shadow-md flex flex-col justify-between">
-          <div>
-            <div className="text-xs font-bold uppercase tracking-wider text-text-muted mb-2">{t('pricing.phase3Tag')}</div>
-            <h3 className="text-xl font-bold text-text-primary mb-2">{t('pricing.phase3Title')}</h3>
-            <p className="text-sm text-text-secondary mb-4">{t('pricing.phase3Desc')}</p>
-            <div className="text-xl font-black data-highlight-num mb-4">{t('pricing.phase3Period')}</div>
-            <ul className="text-xs text-text-secondary space-y-2.5 mb-6">
-              <li>{t('pricing.phase3Item1')}</li>
-              <li>{t('pricing.phase3Item2')}</li>
-              <li>{t('pricing.phase3Item3')}</li>
-            </ul>
+          <div className="p-4 rounded-xl bg-surface-muted border border-[var(--color-border)] text-xs text-text-secondary leading-relaxed">
+            <span className="font-bold text-text-primary">
+              {isAr ? 'ملاحظة حدود التقدير: ' : 'Scope & Validation Note: '}
+            </span>
+            {isAr
+              ? 'هذا الرقم تقدير أكاديمي ضمن بحث التخرج وليس سعراً تجارياً مُثبتاً في السوق أو التزاماً من IBM. تظل الأسعار والنطاق والقيمة ومتطلبات الأمان واستعداد الدفع خاضعة للتحقق.'
+              : 'This is an unvalidated academic estimate, not validated market pricing or an IBM commercial commitment. Price, scope, customer value, security requirements, and willingness to pay remain subject to validation.'}
           </div>
-          <AppButton variant="outline" size="md" data-testid="pricing-btn-scale" onClick={onOpenPilotModal} className="w-full">
-            {t('nav.cta')}
-          </AppButton>
-        </AppCard>
-      </div>
 
-      <div className="max-w-6xl mx-auto overflow-x-auto rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)] p-6 space-y-4">
-        <h2 className="text-lg font-bold text-text-primary">
-          {isAr ? 'ملخص التدفقات النقدية والافتراضات (Base وDownside — السنوات Y1–Y3)' : '3-Year Base & Downside Cash-Flow Summary (Y1–Y3)'}
-        </h2>
-        <table className="w-full text-start text-xs sm:text-sm">
-          <thead>
-            <tr className="border-b border-[var(--color-border)] text-text-secondary">
-              <th className="py-2 px-3 text-start">{isAr ? 'البند' : 'Line Item'}</th>
-              <th className="py-2 px-3 text-start">Y1</th>
-              <th className="py-2 px-3 text-start">Y2</th>
-              <th className="py-2 px-3 text-start">Y3</th>
-              <th className="py-2 px-3 text-start">{isAr ? 'إجمالي 3 سنوات' : '3-Year Total'}</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[var(--color-border)] font-mono">
-            <tr>
-              <td className="py-2 px-3 font-sans font-medium">{isAr ? 'التدفق النقدي السنوي الصافي — Base' : 'Base Net Annual Cash Flow'}</td>
-              <td className="py-2 px-3">$5,196</td>
-              <td className="py-2 px-3">$278,996</td>
-              <td className="py-2 px-3">$643,996</td>
-              <td className="py-2 px-3 font-bold">$928,188</td>
-            </tr>
-            <tr>
-              <td className="py-2 px-3 font-sans font-medium">{isAr ? 'التدفق النقدي التراكمي — Base' : 'Base Cumulative Cash Flow'}</td>
-              <td className="py-2 px-3">$5,196</td>
-              <td className="py-2 px-3">$284,192</td>
-              <td className="py-2 px-3">$928,188</td>
-              <td className="py-2 px-3 font-bold">$928,188</td>
-            </tr>
-            <tr>
-              <td className="py-2 px-3 font-sans font-medium">{isAr ? 'التدفق النقدي السنوي الصافي — Downside' : 'Downside Net Annual Cash Flow'}</td>
-              <td className="py-2 px-3 text-red-600 dark:text-red-400 font-bold">-$67,804</td>
-              <td className="py-2 px-3">$16,196</td>
-              <td className="py-2 px-3">$103,796</td>
-              <td className="py-2 px-3 font-bold">$52,188</td>
-            </tr>
-            <tr>
-              <td className="py-2 px-3 font-sans font-medium">{isAr ? 'التدفق النقدي التراكمي — Downside' : 'Downside Cumulative Cash Flow'}</td>
-              <td className="py-2 px-3 text-red-600 dark:text-red-400 font-bold">-$67,804</td>
-              <td className="py-2 px-3">-$51,608</td>
-              <td className="py-2 px-3">$52,188</td>
-              <td className="py-2 px-3 font-bold">$52,188</td>
-            </tr>
-          </tbody>
-        </table>
+          {onOpenPilotModal && (
+            <div className="pt-1">
+              <AppButton
+                variant="primary"
+                size="md"
+                data-testid="pricing-btn-simulate"
+                onClick={onOpenPilotModal}
+                className="w-full"
+              >
+                {t('nav.cta')}
+              </AppButton>
+            </div>
+          )}
+        </AppCard>
       </div>
     </div>
   );

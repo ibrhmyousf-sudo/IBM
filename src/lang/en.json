@@ -43,7 +43,7 @@
   },
   "financials": {
     "sectionTitle": "IBM Consulting Financial Baseline & Sources (S1–S5)",
-    "sectionSubtitle": "IBM Consulting figures from SEC filings (S1–S2) alongside D3 model parameters ($15,000 modeled fee; $567 historical 9-Nov-2026 platform proxy via S5)",
+    "sectionSubtitle": "IBM Consulting figures from SEC filings (S1–S2) alongside D3 model parameters ($15,000 modeled fee; Published IBM list price captured on 9 November 2026, used as a platform cost input in the academic financial model (S5))",
     "toggleFY2025": "FY2025 — IBM FY2025 Form 10-K (S1)",
     "toggleInterim": "9M 2026 & Q3 2025 -> Q3 2026 — IBM Q3 2026 Form 10-Q (S2)",
     "metricCol": "IBM Consulting Metric",
@@ -65,7 +65,7 @@
     "scaleCard2Title": "IBM Q3 2026 Form 10-Q (S2)",
     "scaleCard2Desc": "9M 2026 Consulting revenue $15.934B (+1.5% vs. $15.706B in 9M 2025); Q3 2025 -> Q3 2026 Consulting revenue $5,324M -> $5,335M (+0.2% as reported).",
     "scaleCard3Title": "Consulting Advantage & Sources (S3–S5)",
-    "scaleCard3Desc": "S3 notes IBM describes Consulting Advantage around nearly 150,000 consultants; S4 covers watsonx Orchestrate document extractor triggers/limits; S5 is the 9-Nov-2026 pricing capture ($567 Essentials proxy)."
+    "scaleCard3Desc": "S3 notes IBM describes Consulting Advantage around nearly 150,000 consultants; S4 covers watsonx Orchestrate document extractor triggers/limits; S5 is the Published IBM list price captured on 9 November 2026, used as a platform cost input in the academic financial model."
   },
   "scale": {
     "sectionTitle": "IBM Consulting Context & Hypothesis Scope",
