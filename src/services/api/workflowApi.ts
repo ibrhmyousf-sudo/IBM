@@ -44,7 +44,7 @@ const FALLBACK_STEPS: WorkflowStep[] = [
     descKey: 'workflow.step5Desc',
     inputsKey: 'workflow.step5Inputs',
     outputsKey: 'workflow.step5Outputs',
-    isHumanGoverned: true, // Crucial Human Review Point
+    isHumanGoverned: true,
     testId: 'workflow-step-card-5'
   },
   {
@@ -53,30 +53,30 @@ const FALLBACK_STEPS: WorkflowStep[] = [
     descKey: 'workflow.step6Desc',
     inputsKey: 'workflow.step6Inputs',
     outputsKey: 'workflow.step6Outputs',
-    isHumanGoverned: true, // Lead Partner Sign-off
+    isHumanGoverned: true,
     testId: 'workflow-step-card-6'
   }
 ];
 
 const FALLBACK_DELIVERABLES: PilotDeliverable[] = [
   {
-    id: 'DELIV-01',
+    id: 'OUT-01',
     titleKey: 'deliverables.deliv1Title',
     descKey: 'deliverables.deliv1Desc',
-    deliveryWeek: 2,
+    deliveryWeek: 6,
     provenance: 'STUDENT-PROPOSED DESIGN',
     testId: 'workflow-deliverable-card-01'
   },
   {
-    id: 'DELIV-02',
+    id: 'OUT-02',
     titleKey: 'deliverables.deliv2Title',
     descKey: 'deliverables.deliv2Desc',
-    deliveryWeek: 4,
+    deliveryWeek: 6,
     provenance: 'STUDENT-PROPOSED DESIGN',
     testId: 'workflow-deliverable-card-02'
   },
   {
-    id: 'DELIV-03',
+    id: 'OUT-03',
     titleKey: 'deliverables.deliv3Title',
     descKey: 'deliverables.deliv3Desc',
     deliveryWeek: 6,
@@ -84,28 +84,20 @@ const FALLBACK_DELIVERABLES: PilotDeliverable[] = [
     testId: 'workflow-deliverable-card-03'
   },
   {
-    id: 'DELIV-04',
+    id: 'OUT-04',
     titleKey: 'deliverables.deliv4Title',
     descKey: 'deliverables.deliv4Desc',
-    deliveryWeek: 8,
+    deliveryWeek: 6,
     provenance: 'STUDENT-PROPOSED DESIGN',
     testId: 'workflow-deliverable-card-04'
   },
   {
-    id: 'DELIV-05',
+    id: 'OUT-05',
     titleKey: 'deliverables.deliv5Title',
     descKey: 'deliverables.deliv5Desc',
-    deliveryWeek: 10,
+    deliveryWeek: 6,
     provenance: 'STUDENT-PROPOSED DESIGN',
     testId: 'workflow-deliverable-card-05'
-  },
-  {
-    id: 'DELIV-06',
-    titleKey: 'deliverables.deliv6Title',
-    descKey: 'deliverables.deliv6Desc',
-    deliveryWeek: 12,
-    provenance: 'STUDENT-PROPOSED DESIGN',
-    testId: 'workflow-deliverable-card-06'
   }
 ];
 
@@ -133,15 +125,13 @@ export const workflowApi = {
       const response = await apiClient.post<ReviewRequestResponse>('/api/v1/workflow/reviews', payload);
       return response.data;
     } catch {
-      // Deterministic simulation response matching API contract
       const randomSeq = Math.floor(100 + Math.random() * 900);
       return {
         id: Date.now(),
-        code: `REV-2026-${randomSeq}`,
-        status: 'SUBMITTED_TO_STAGE_1',
+        code: `SIM-REF-${randomSeq}`,
+        status: 'LOCAL_DEMO_ONLY',
         title: payload.title
       };
     }
   }
 };
-

@@ -33,70 +33,54 @@ const FALLBACK_VALUE_PROPS: ValueProposition[] = [
 ];
 
 const FALLBACK_FINANCIALS: FinancialMetric[] = [
-  // FY 2025 Full-Year (SEC Form 10-K)
+  // FY2025 — S1, IBM FY2025 Form 10-K
   {
     metricId: 'M-01',
-    labelKey: 'financials.revenue',
-    value: '$67,535M',
-    margin: '-',
-    sourceTag: 'SEC-VERIFIED FACT',
+    labelKey: 'financials.consultingRevenue',
+    value: '$21.055B',
+    margin: '28.1% Gross Margin',
+    sourceTag: 'IBM OFFICIAL FACT',
     category: 'fy2025'
   },
   {
     metricId: 'M-02',
     labelKey: 'financials.grossProfit',
-    value: '$39,297M',
-    margin: '58.2%',
-    sourceTag: 'SEC-VERIFIED FACT',
+    value: '$5.921B',
+    margin: '28.1% Gross Margin',
+    sourceTag: 'IBM OFFICIAL FACT',
     category: 'fy2025'
   },
   {
     metricId: 'M-03',
-    labelKey: 'financials.consultingRevenue',
-    value: '$21,055M',
-    margin: '28.1%',
-    sourceTag: 'SEC-VERIFIED FACT',
-    category: 'fy2025'
-  },
-  {
-    metricId: 'M-04',
     labelKey: 'financials.consultingProfit',
-    value: '$2,464M',
-    margin: '11.7%',
-    sourceTag: 'SEC-VERIFIED FACT',
+    value: '$2.464B',
+    margin: '11.7% Segment Margin',
+    sourceTag: 'IBM OFFICIAL FACT',
     category: 'fy2025'
   },
-  // Interim 9M 2026 (SEC Form 10-Q)
+  // 9M 2026 & Q3 2025 -> Q3 2026 — S2, IBM Q3 2026 Form 10-Q
   {
     metricId: 'M-05',
     labelKey: 'financials.interimRevenue',
-    value: '$50,182M',
-    margin: '-',
-    sourceTag: 'SEC-VERIFIED FACT',
-    category: 'interim2026'
-  },
-  {
-    metricId: 'M-06',
-    labelKey: 'financials.interimConsulting',
-    value: '$15,934M',
-    margin: '27.9%',
-    sourceTag: 'SEC-VERIFIED FACT',
+    value: '$15.934B',
+    margin: '+1.5% vs. $15.706B (9M 2025)',
+    sourceTag: 'IBM OFFICIAL FACT',
     category: 'interim2026'
   },
   {
     metricId: 'M-07',
     labelKey: 'financials.q3Revenue',
-    value: '$17,103M',
-    margin: '-',
-    sourceTag: 'SEC-VERIFIED FACT',
+    value: '$5,335M',
+    margin: '$5,324M -> $5,335M (+0.2%)',
+    sourceTag: 'IBM OFFICIAL FACT',
     category: 'interim2026'
   },
   {
     metricId: 'M-08',
     labelKey: 'financials.q3Consulting',
-    value: '$5,335M',
-    margin: '27.4%',
-    sourceTag: 'SEC-VERIFIED FACT',
+    value: '12.2% Segment Margin',
+    margin: '12.9% -> 12.2% (-0.6 pts IBM; Gross 29.3% -> 27.4%, -1.9 pts)',
+    sourceTag: 'IBM OFFICIAL FACT',
     category: 'interim2026'
   }
 ];
@@ -104,23 +88,23 @@ const FALLBACK_FINANCIALS: FinancialMetric[] = [
 const FALLBACK_SCALE_STATS: ScaleStat[] = [
   {
     id: 'scale-01',
-    value: '175+',
+    value: 'S1 (FY2025 10-K)',
     labelKey: 'financials.scaleCard1Title',
-    source: 'IBM Corporate 10-K',
+    source: 'IBM FY2025 Form 10-K (S1)',
     testId: 'metrics-stat-scale-01'
   },
   {
     id: 'scale-02',
-    value: '150,000+',
+    value: 'S2 (Q3 2026 10-Q)',
     labelKey: 'financials.scaleCard2Title',
-    source: 'IBM Consulting Factsheet',
+    source: 'IBM Q3 2026 Form 10-Q (S2)',
     testId: 'metrics-stat-scale-02'
   },
   {
     id: 'scale-03',
-    value: 'Advantage AI',
+    value: 'S3–S5 Scope',
     labelKey: 'financials.scaleCard3Title',
-    source: 'IBM Official Fact',
+    source: 'S3 / S4 / S5 (9-Nov-2026 Proxy)',
     testId: 'metrics-stat-scale-03'
   }
 ];
@@ -149,4 +133,3 @@ export const metricsApi = {
     return FALLBACK_SCALE_STATS;
   }
 };
-

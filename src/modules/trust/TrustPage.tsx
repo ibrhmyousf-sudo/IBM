@@ -11,7 +11,7 @@ export const TrustPage: React.FC = () => {
       <div className="text-center max-w-3xl mx-auto space-y-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary)] text-xs font-bold mb-2 border border-[var(--color-primary)]/30">
           <span className="pulse-active-dot" />
-          <span>Governance & Human Oversight</span>
+          <span>{t('governance.strictMandate')}</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-text-primary tracking-tight">
           {t('trust.pageTitle')}

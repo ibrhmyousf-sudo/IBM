@@ -15,32 +15,19 @@ export const FinancialsTable: React.FC<FinancialsTableProps> = ({ metrics }) => 
   const filteredMetrics = metrics.filter(m => m.category === activeCategory);
 
   // Active Key Performance Indicators for highlighted summary
-  const summaryCards = [
-    {
-      label: 'IBM Total Revenue',
-      value: activeCategory === 'fy2025' ? '$67,535M' : '$50,182M',
-      sub: activeCategory === 'fy2025' ? 'FY2025 Audited' : '9M 2026 Interim',
-      badge: 'SEC 10-K'
-    },
-    {
-      label: 'Consulting Revenue',
-      value: activeCategory === 'fy2025' ? '$21,055M' : '$15,934M',
-      sub: activeCategory === 'fy2025' ? '31.2% Total Share' : '31.8% Total Share',
-      badge: 'Core Focus'
-    },
-    {
-      label: 'Consulting Gross Margin',
-      value: activeCategory === 'fy2025' ? '28.1%' : '27.9%',
-      sub: activeCategory === 'fy2025' ? 'Segment Gross Profit $5,921M' : 'Segment Gross Profit $4,450M',
-      badge: 'Profitability'
-    },
-    {
-      label: 'Segment Profit Margin',
-      value: '11.7%',
-      sub: activeCategory === 'fy2025' ? 'Profit $2,464M' : 'Profit $1,858M',
-      badge: 'Stable'
-    }
-  ];
+  const summaryCards = activeCategory === 'fy2025'
+    ? [
+        { label: 'IBM Consulting Revenue', value: '$21.055B', sub: 'FY2025 — IBM FY2025 Form 10-K', badge: 'S1' },
+        { label: 'IBM Consulting Gross Profit', value: '$5.921B', sub: '28.1% Gross Margin (FY2025)', badge: 'S1' },
+        { label: 'IBM Consulting Segment Profit', value: '$2.464B', sub: '11.7% Segment Margin (FY2025)', badge: 'S1' },
+        { label: 'Pilot Scope & Model Fee', value: '$15,000', sub: '6 wks · 8 docs · 5 outputs (modeled)', badge: 'D3' }
+      ]
+    : [
+        { label: 'Consulting Revenue (9M 2026)', value: '$15.934B', sub: '+1.5% vs. $15.706B (9M 2025)', badge: 'S2' },
+        { label: 'Consulting Revenue (Q3 2025 -> Q3 2026)', value: '$5,335M', sub: '$5,324M -> $5,335M (+0.2%)', badge: 'S2' },
+        { label: 'Consulting Segment Margin (Q3 2025 -> Q3 2026)', value: '12.2%', sub: '12.9% -> 12.2% (-0.6 pts IBM)', badge: 'S2' },
+        { label: 'Historical Platform Proxy', value: '$567/mo', sub: '9-Nov-2026 capture · $6,804/yr · $20,412 3-yr', badge: 'S5' }
+      ];
 
   return (
     <section className="financials-section py-12 md:py-16 border-t border-[var(--color-border)]" aria-labelledby="fin-heading">
@@ -49,7 +36,7 @@ export const FinancialsTable: React.FC<FinancialsTableProps> = ({ metrics }) => 
           <div className="flex items-center gap-2 mb-2">
             <span className="pulse-active-dot" />
             <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-primary)]">
-              Official SEC Form 10-K Evidence Set
+              IBM Consulting Filings (S1–S2)
             </span>
           </div>
           <h2 id="fin-heading" className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight">
@@ -161,7 +148,7 @@ export const FinancialsTable: React.FC<FinancialsTableProps> = ({ metrics }) => 
                     size="sm"
                     data-testid={`metrics-badge-${item.metricId}`}
                   >
-                    {t('financials.secTag')}
+                    {activeCategory === 'fy2025' ? t('financials.secTag') : t('financials.ibmTag')}
                   </AppBadge>
                 </td>
               </tr>
