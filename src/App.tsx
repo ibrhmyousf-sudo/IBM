@@ -50,7 +50,7 @@ export const App: React.FC = () => {
       case '/pricing':
         return <PricingPage onOpenPilotModal={() => setIsPilotModalOpen(true)} />;
       case '/trust':
-        return <TrustPage onOpenPilotModal={handleOpenPilotModal}  onOpenPilotModal={() => setIsPilotModalOpen(true)} />;
+        return <TrustPage onOpenPilotModal={() => setIsPilotModalOpen(true)} />;
       case '/':
       default:
         return (
